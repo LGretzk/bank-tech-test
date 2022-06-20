@@ -1,6 +1,10 @@
 class BankAccount {
   constructor() {
     this.balance = 0;
+    this.transaction = {
+      type: null,
+      amount: 0
+    }
   }
 
   getBalance() {
@@ -9,6 +13,10 @@ class BankAccount {
 
   deposit(amount) {
     this.balance += amount;
+    this.transaction = {
+      type: "deposit",
+      amount: amount
+    };
   }
 
   withdraw(amount) {

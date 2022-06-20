@@ -19,4 +19,10 @@ describe("BankAccount", () => {
     testBankAccount.withdraw(40);
     expect(testBankAccount.getBalance()).toBe(10);
   });
+
+  it("creates a transaction with type and amount when money is deposited", () => {
+    testBankAccount.deposit(50);
+    expect(testBankAccount.transaction.type).toBe("deposit");
+    expect(testBankAccount.transaction.amount).toBe(50);
+  })
 });
