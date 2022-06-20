@@ -16,23 +16,23 @@ class BankAccount {
 
   deposit(amount) {
     this.balance += amount;
-    this.transaction = {
-      type: "deposit",
-      amount: amount,
-      date: new Date(),
-      balance: this.balance      
-    };
+    this.createTransaction("deposit", amount);
   }
 
   withdraw(amount) {
     this.balance -= amount;
+    this.createTransaction("credit", amount);
+  }
+
+  createTransaction(type, amount) {
     this.transaction = {
-      type: "credit",
+      type: type,
       amount: amount,
       date: new Date(),
       balance: this.balance
     };
   }
+
 }
 
 module.exports = BankAccount;
