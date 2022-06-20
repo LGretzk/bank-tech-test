@@ -1,14 +1,16 @@
+const BankAccount = require('./bankAccount');
+
 describe("BankAccount", () => {
+  beforeEach(() => {
+    testBankAccount = new BankAccount;
+  })
+
   it("initiates to an instance of BankAccount", () => {
-    const BankAccount = require('./bankAccount');
-    const BankAccountTest = new BankAccount;
-    expect(BankAccountTest).toBeInstanceOf(BankAccount);
+    expect(testBankAccount).toBeInstanceOf(BankAccount);
   });
 
-  it("accepts deposits", () => {
-    const BankAccount = require('./bankAccount');
-    const BankAccountTest = new BankAccount;
-    BankAccountTest.deposit(50);
-    expect(BankAccountTest.getBalance()).toBe(50);
+  it("accepts a deposit of 50 and increases balance by 50", () => {
+    testBankAccount.deposit(50);
+    expect(testBankAccount.getBalance()).toBe(50);
   });
 });
