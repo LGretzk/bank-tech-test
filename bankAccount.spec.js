@@ -29,11 +29,19 @@ describe("BankAccount", () => {
   it("creates a transaction with type, amount and balance when money is deposited", () => {
     testBankAccount.deposit(50);
     expect(testBankAccount.transaction.balance).toBe(50);
-    expect(testBankAccount.transaction.balance).toEqual(testBankAccount.getBalance());
   });
 
   it("creates a transaction with type, amount, balance and date when money is deposited", () => {
     testBankAccount.deposit(50);
     expect(testBankAccount.transaction.date).toEqual(new Date());
-  })
+  });
+
+  it("ceates a transaction with type, amount, balance and date when money is withdrawn", () => {
+    testBankAccount.deposit(50);
+    testBankAccount.withdraw(40);
+    expect(testBankAccount.transaction.type).toBe("credit");
+    expect(testBankAccount.transaction.amount).toBe(40);
+    expect(testBankAccount.transaction.balance).toBe(10);
+    expect(testBankAccount.transaction.date).toEqual(new Date());
+  });
 });

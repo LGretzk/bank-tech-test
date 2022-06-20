@@ -1,7 +1,7 @@
 class BankAccount {
   constructor() {
     this.balance = 0;
-    
+
     this.transaction = {
       type: null,
       amount: 0,
@@ -26,6 +26,12 @@ class BankAccount {
 
   withdraw(amount) {
     this.balance -= amount;
+    this.transaction = {
+      type: "credit",
+      amount: amount,
+      date: new Date(),
+      balance: this.balance
+    };
   }
 }
 
