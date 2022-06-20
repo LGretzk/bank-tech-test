@@ -1,10 +1,13 @@
 class BankAccount {
   constructor() {
     this.balance = 0;
+    
     this.transaction = {
       type: null,
-      amount: 0
-    }
+      amount: 0,
+      date: null,
+      balance: 0
+    };
   }
 
   getBalance() {
@@ -15,7 +18,9 @@ class BankAccount {
     this.balance += amount;
     this.transaction = {
       type: "deposit",
-      amount: amount
+      amount: amount,
+      date: new Date(),
+      balance: this.balance      
     };
   }
 
