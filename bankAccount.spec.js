@@ -13,4 +13,10 @@ describe("BankAccount", () => {
     testBankAccount.deposit(50);
     expect(testBankAccount.getBalance()).toBe(50);
   });
+
+  it("accepts a withdrawal of 40 and decreases balance by 40", () => {
+    testBankAccount.deposit(50);
+    testBankAccount.withdraw(40);
+    expect(testBankAccount.getBalance()).toBe(10);
+  });
 });
