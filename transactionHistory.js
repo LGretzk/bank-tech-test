@@ -1,11 +1,19 @@
 class TransactionHistory {
-  constructor(Transaction) {
-    this.transaction = new Transaction;    
+  constructor() {  
     this.log = [];
   }
 
   add(type, amount, balance) {
-    this.log.push(this.transaction.new(type, amount, balance));
+    this.log.push(this.newTransaction(type, amount, balance));
+  }
+
+  newTransaction(type, amount, balance) {
+    return {
+      type: type,
+      amount: amount,
+      date: new Date().toLocaleDateString("en-GB"),
+      balance: balance
+    };
   }
 };
 

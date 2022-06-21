@@ -1,9 +1,8 @@
 const TransactionHistory = require('./transactionHistory');
-const Transaction = require('./transaction');
 
 describe("TransactionHistory", () => {
   beforeEach(() => {
-    testTransactionHistory = new TransactionHistory(Transaction);
+    testTransactionHistory = new TransactionHistory();
   });
 
   it("saves a transaction", () => {

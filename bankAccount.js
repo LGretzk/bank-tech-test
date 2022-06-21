@@ -1,7 +1,7 @@
 class BankAccount {
-  constructor(TransactionHistory, Transaction, PrintStatement) {
-    this.transactionHistory = new TransactionHistory(Transaction);
-    this.printStatement = new PrintStatement;
+  constructor(TransactionHistory, PrintStatement) {
+    this.transactionHistory = TransactionHistory;
+    this.printStatement = PrintStatement;
     this.balance = 0;
   }
 
@@ -19,7 +19,7 @@ class BankAccount {
     this.transactionHistory.add("debit", amount, this.balance);
   }
 
-  printStatement() {
+  getPrintStatement() {
     this.printStatement.create(this.transactionHistory.log);
   }
 };

@@ -2,7 +2,7 @@ const PrintStatement = require("./printStatement");
 
 describe("printStatement", () => {
   beforeEach(() => {
-    printStatement = new PrintStatement;
+    printStatement = new PrintStatement();
   });
 
   it("prints a statement with one deposit", () => {
@@ -27,7 +27,7 @@ describe("printStatement", () => {
       date: date,
       balance: -10
     }];
-    
+
     expect(printStatement.create(transactionHistory)).toEqual(
       `date || credit || debit || balance \n${date} || || 10.00 || -10.00 \n`
     );
