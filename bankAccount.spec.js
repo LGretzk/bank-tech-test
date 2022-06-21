@@ -22,7 +22,7 @@ describe("BankAccount", () => {
 
   it("creates a transaction with type and amount when money is deposited", () => {
     testBankAccount.deposit(50);
-    expect(testBankAccount.transaction.type).toBe("deposit");
+    expect(testBankAccount.transaction.type).toBe("credit");
     expect(testBankAccount.transaction.amount).toBe(50);
   });
 
@@ -43,7 +43,7 @@ describe("BankAccount", () => {
     testBankAccount.withdraw(40);
     let date = new Date().toLocaleDateString("en-GB");
 
-    expect(testBankAccount.transaction.type).toBe("credit");
+    expect(testBankAccount.transaction.type).toBe("debit");
     expect(testBankAccount.transaction.amount).toBe(40);
     expect(testBankAccount.transaction.balance).toBe(10);
     expect(testBankAccount.transaction.date).toEqual(date);
@@ -53,7 +53,7 @@ describe("BankAccount", () => {
     testBankAccount.deposit(50);
     let date = new Date().toLocaleDateString("en-GB");
     const testHistory = {
-      type: "deposit",
+      type: "credit",
       amount: 50,
       date: date,
       balance: 50
@@ -67,13 +67,13 @@ describe("BankAccount", () => {
     testBankAccount.withdraw(30);
     let date = new Date().toLocaleDateString("en-GB");
     const depositHistory = {
-      type: "deposit",
+      type: "credit",
       amount: 50,
       date: date,
       balance: 50
     };
     const withdrawalHistory = {
-      type: "credit",
+      type: "debit",
       amount: 30,
       date: date,
       balance: 20
@@ -86,7 +86,7 @@ describe("BankAccount", () => {
     testBankAccount.deposit(50);
     let date = new Date().toLocaleDateString("en-GB");
     const depositHistory = {
-      type: "deposit",
+      type: "credit",
       amount: 50,
       date: date,
       balance: 50

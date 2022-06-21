@@ -17,19 +17,19 @@ class BankAccount {
 
   deposit(amount) {
     this.balance += amount;
-    this.createTransaction("deposit", amount);
+    this.createTransaction("credit", amount);
     this.transactionHistory.push(this.transaction);
   }
 
   withdraw(amount) {
     this.balance -= amount;
-    this.createTransaction("credit", amount);
+    this.createTransaction("debit", amount);
     this.transactionHistory.push(this.transaction);
   }
 
   printStatement() {
     let test = this.transactionHistory.map(transaction => {
-      if (transaction.type === "deposit") {
+      if (transaction.type === "credit") {
         return `${transaction.date} || ${transaction.amount.toFixed(2)} || || ${transaction.balance.toFixed(2)}`
       }
       return `${transaction.date} || || ${transaction.amount.toFixed(2)} || ${transaction.balance.toFixed(2)}`
