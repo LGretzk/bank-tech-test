@@ -99,28 +99,30 @@ describe("BankAccount", () => {
     it("prints a statement with one deposit", () => {
       testBankAccount.deposit(50);
       let date = new Date().toLocaleDateString("en-GB");
-      const depositHistory = {
-        type: "credit",
-        amount: 50,
-        date: date,
-        balance: 50
-      };
   
       expect(testBankAccount.printStatement()).toEqual(
-        `date || credit || debit || balance \n ${date} || 50.00 || || 50.00`);
+        `date || credit || debit || balance \n${date} || 50.00 || || 50.00 \n`
+      );
     });
 
     it("prints a statement with one withdrawal", () => {
       testBankAccount.withdraw(10);
       let date = new Date().toLocaleDateString("en-GB");
-      const withdrawalHistory = {
-        type: "debit",
-        amount: 10,
-        date: date,
-        balance: -10
-      };
+
       expect(testBankAccount.printStatement()).toEqual(
-        `date || credit || debit || balance \n ${date} || || 10.00 || -10.00`);
+        `date || credit || debit || balance \n${date} || || 10.00 || -10.00 \n`
+      );
+    });
+
+    it("prints a statement with multiple transactions", () => {
+      let date = new Date().toLocaleDateString("en-GB");
+      testBankAccount.deposit(1000);
+      testBankAccount.deposit(2000);
+      testBankAccount.withdraw(500);
+
+      expect(testBankAccount.printStatement()).toBe(
+        `date || credit || debit || balance \n${date} || || 500.00 || 2500.00 \n${date} || 2000.00 || || 3000.00 \n${date} || 1000.00 || || 1000.00 \n`        
+      );
     });
   });
 });
