@@ -49,10 +49,9 @@ describe("BankAccount", () => {
     expect(testBankAccount.transaction.date).toEqual(date);
   });
 
-  it("saves each transaction in transacton history", () => {
+  it("saves one transaction in transacton history", () => {
     testBankAccount.deposit(50);
     let date = new Date().toLocaleDateString("en-GB");
-
     const testHistory = {
       type: "deposit",
       amount: 50,
@@ -61,5 +60,28 @@ describe("BankAccount", () => {
     };
 
     expect(testBankAccount.transactionHistory).toEqual([testHistory]);
-  })
+  });
+
+  it("saves multiple transactions in transaction history", () => {
+    testBankAccount.deposit(50);
+    testBankAccount.withdraw(30);
+    let date = new Date().toLocaleDateString("en-GB");
+    const depositHistory = {
+      type: "deposit",
+      amount: 50,
+      date: date,
+      balance: 50
+    };
+    const withdrawalHistory = {
+      type: "credit",
+      amount: 30,
+      date: date,
+      balance: 20
+    };
+
+    expect(testBankAccount.transactionHistory).toEqual([depositHistory, withdrawalHistory]);
+  });
+  
+
+
 });

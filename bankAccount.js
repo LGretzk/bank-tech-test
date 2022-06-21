@@ -24,6 +24,7 @@ class BankAccount {
   withdraw(amount) {
     this.balance -= amount;
     this.createTransaction("credit", amount);
+    this.transactionHistory.push(this.transaction);
   }
 
   createTransaction(type, amount) {
