@@ -27,6 +27,16 @@ class BankAccount {
     this.transactionHistory.push(this.transaction);
   }
 
+  printStatement() {
+    let test = this.transactionHistory.map(transaction => 
+      `${transaction.date} || ${transaction.amount.toFixed(2)} || || ${transaction.balance.toFixed(2)}`);
+    return `${this.printHeading()} \n ${test.join()}`;
+  }
+
+  printHeading() {
+    return `date || credit || debit || balance`;
+  }
+
   createTransaction(type, amount) {
     this.transaction = {
       type: type,

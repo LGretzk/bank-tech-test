@@ -82,6 +82,18 @@ describe("BankAccount", () => {
     expect(testBankAccount.transactionHistory).toEqual([depositHistory, withdrawalHistory]);
   });
   
+  it("prints a bank statement with one deposit", () => {
+    testBankAccount.deposit(50);
+    let date = new Date().toLocaleDateString("en-GB");
+    const depositHistory = {
+      type: "deposit",
+      amount: 50,
+      date: date,
+      balance: 50
+    };
 
+    expect(testBankAccount.printStatement()).toEqual(
+      `date || credit || debit || balance \n ${date} || 50.00 || || 50.00`)
+  });
 
 });
