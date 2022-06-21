@@ -1,14 +1,7 @@
 class BankAccount {
-  constructor() {
+  constructor(TransactionHistory, Transaction) {
+    this.transactionHistory = new TransactionHistory(Transaction);
     this.balance = 0;
-    this.transactionHistory = [];
-
-    this.transaction = {
-      type: null,
-      amount: 0,
-      date: null,
-      balance: 0
-    };
   }
 
   getBalance() {
@@ -17,14 +10,12 @@ class BankAccount {
 
   deposit(amount) {
     this.balance += amount;
-    this.createTransaction("credit", amount);
-    this.transactionHistory.push(this.transaction);
+    this.transactionHistory.add("credit", amount, this.balance);
   }
 
   withdraw(amount) {
     this.balance -= amount;
-    this.createTransaction("debit", amount);
-    this.transactionHistory.push(this.transaction);
+    this.transactionHistory.add("debit", amount, this.balance);
   }
 
   printStatement() {
@@ -40,16 +31,6 @@ class BankAccount {
   printHeading() {
     return `date || credit || debit || balance \n`;
   }
-
-  createTransaction(type, amount) {
-    this.transaction = {
-      type: type,
-      amount: amount,
-      date: new Date().toLocaleDateString("en-GB"),
-      balance: this.balance
-    };
-  }
-
-}
+};
 
 module.exports = BankAccount;
