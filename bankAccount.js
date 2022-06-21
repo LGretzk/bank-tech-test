@@ -28,8 +28,12 @@ class BankAccount {
   }
 
   printStatement() {
-    let test = this.transactionHistory.map(transaction => 
-      `${transaction.date} || ${transaction.amount.toFixed(2)} || || ${transaction.balance.toFixed(2)}`);
+    let test = this.transactionHistory.map(transaction => {
+      if (transaction.type === "deposit") {
+        return `${transaction.date} || ${transaction.amount.toFixed(2)} || || ${transaction.balance.toFixed(2)}`
+      }
+      return `${transaction.date} || || ${transaction.amount.toFixed(2)} || ${transaction.balance.toFixed(2)}`
+    });
     return `${this.printHeading()} \n ${test.join()}`;
   }
 

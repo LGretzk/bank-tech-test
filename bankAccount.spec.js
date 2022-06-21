@@ -93,7 +93,20 @@ describe("BankAccount", () => {
     };
 
     expect(testBankAccount.printStatement()).toEqual(
-      `date || credit || debit || balance \n ${date} || 50.00 || || 50.00`)
+      `date || credit || debit || balance \n ${date} || 50.00 || || 50.00`);
+  });
+
+  it("prints a bank statement with one withdrawal", () => {
+    testBankAccount.withdraw(10);
+    let date = new Date().toLocaleDateString("en-GB");
+    const withdrawalHistory = {
+      type: "debit",
+      amount: 10,
+      date: date,
+      balance: -10
+    };
+    expect(testBankAccount.printStatement()).toEqual(
+      `date || credit || debit || balance \n ${date} || || 10.00 || -10.00`);
   });
 
 });
