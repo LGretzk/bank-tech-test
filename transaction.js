@@ -9,4 +9,10 @@ class Transaction {
   }
 };
 
+let transaction = new Transaction;
+let newTrans = transaction.new("credit", 50, 50);
+
+console.log(transaction);
+console.log(newTrans);
+
 module.exports = Transaction;

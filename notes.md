@@ -63,6 +63,36 @@ class BankAccount {
   printStatement()
 }
 
+Splitting the class
+
+BankAccount {
+  constructor(TransactionHistory) {
+    balance = 0;
+    transactionHistory = new TransactionHistory;
+  }
+
+  deposit(amount) {
+    transactionHistory.add('credit', amount)
+  }
+
+  withdraw(amount) {
+    transactionHistory.add('debit', amount)
+  }
+}
+
+TransactionHistory {
+  constructor() {
+    transactions = []
+  }
+
+  add(type, amount) {
+    newTransaction(type, amount);
+    this.transactions.push(newTransaction)
+  }
+
+  newTransaction
+}
+
 
 Input:
 - deposit 1000 on 10/01/2023

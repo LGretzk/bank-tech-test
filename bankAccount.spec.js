@@ -54,41 +54,41 @@ describe("BankAccount", () => {
   });
   
   describe("transaction history", () => {
-    beforeEach(() => {
-      testBankAccount = new BankAccount;
-      testBankAccount.deposit(50);
-    });
+    // beforeEach(() => {
+    //   testBankAccount = new BankAccount;
+    //   testBankAccount.deposit(50);
+    // });
 
-    it("saves a transaction", () => {
-      let date = new Date().toLocaleDateString("en-GB");
-      const testHistory = {
-        type: "credit",
-        amount: 50,
-        date: date,
-        balance: 50
-      };
+    // it("saves a transaction", () => {
+    //   let date = new Date().toLocaleDateString("en-GB");
+    //   const testHistory = {
+    //     type: "credit",
+    //     amount: 50,
+    //     date: date,
+    //     balance: 50
+    //   };
 
-      expect(testBankAccount.transactionHistory).toEqual([testHistory]);
-    });
+    //   expect(testBankAccount.transactionHistory).toEqual([testHistory]);
+    // });
 
-    it("saves multiple transactions", () => {
-      testBankAccount.withdraw(30);
-      let date = new Date().toLocaleDateString("en-GB");
-      const deposit = {
-        type: "credit",
-        amount: 50,
-        date: date,
-        balance: 50
-      };
-      const withdrawal = {
-        type: "debit",
-        amount: 30,
-        date: date,
-        balance: 20
-      };
+    // it("saves multiple transactions", () => {
+    //   testBankAccount.withdraw(30);
+    //   let date = new Date().toLocaleDateString("en-GB");
+    //   const deposit = {
+    //     type: "credit",
+    //     amount: 50,
+    //     date: date,
+    //     balance: 50
+    //   };
+    //   const withdrawal = {
+    //     type: "debit",
+    //     amount: 30,
+    //     date: date,
+    //     balance: 20
+    //   };
   
-      expect(testBankAccount.transactionHistory).toEqual([deposit, withdrawal]);
-    });
+    //   expect(testBankAccount.transactionHistory).toEqual([deposit, withdrawal]);
+    // });
   });
 
   describe("printStatement", () => {
