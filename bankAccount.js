@@ -1,6 +1,7 @@
 class BankAccount {
   constructor() {
     this.balance = 0;
+    this.transactionHistory = [];
 
     this.transaction = {
       type: null,
@@ -17,6 +18,7 @@ class BankAccount {
   deposit(amount) {
     this.balance += amount;
     this.createTransaction("deposit", amount);
+    this.transactionHistory.push(this.transaction);
   }
 
   withdraw(amount) {
@@ -28,7 +30,7 @@ class BankAccount {
     this.transaction = {
       type: type,
       amount: amount,
-      date: new Date(),
+      date: new Date().toLocaleDateString("en-GB"),
       balance: this.balance
     };
   }

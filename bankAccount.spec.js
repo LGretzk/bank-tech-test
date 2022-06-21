@@ -33,15 +33,33 @@ describe("BankAccount", () => {
 
   it("creates a transaction with type, amount, balance and date when money is deposited", () => {
     testBankAccount.deposit(50);
-    expect(testBankAccount.transaction.date).toEqual(new Date());
+    let date = new Date().toLocaleDateString("en-GB");
+
+    expect(testBankAccount.transaction.date).toEqual(date);
   });
 
   it("ceates a transaction with type, amount, balance and date when money is withdrawn", () => {
     testBankAccount.deposit(50);
     testBankAccount.withdraw(40);
+    let date = new Date().toLocaleDateString("en-GB");
+
     expect(testBankAccount.transaction.type).toBe("credit");
     expect(testBankAccount.transaction.amount).toBe(40);
     expect(testBankAccount.transaction.balance).toBe(10);
-    expect(testBankAccount.transaction.date).toEqual(new Date());
+    expect(testBankAccount.transaction.date).toEqual(date);
   });
+
+  it("saves each transaction in transacton history", () => {
+    testBankAccount.deposit(50);
+    let date = new Date().toLocaleDateString("en-GB");
+
+    const testHistory = {
+      type: "deposit",
+      amount: 50,
+      date: date,
+      balance: 50
+    };
+
+    expect(testBankAccount.transactionHistory).toEqual([testHistory]);
+  })
 });
