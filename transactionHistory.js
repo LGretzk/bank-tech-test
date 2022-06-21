@@ -1,8 +1,6 @@
 class TransactionHistory {
   constructor(Transaction) {
-    console.log(new Transaction);
-    this.transaction = new Transaction;
-    
+    this.transaction = new Transaction;    
     this.log = [];
   }
 
