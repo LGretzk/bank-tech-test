@@ -22,7 +22,7 @@ describe("BankAccount", () => {
   });
 
 
-  it("accepts 40 and decreases balance by 40", () => {
+  it("withdrawal accepts 40 and decreases balance by 40", () => {
     mockTransactionHistory.add = jest.fn();
     testBankAccount.deposit(50);
     testBankAccount.withdraw(40);
@@ -32,12 +32,10 @@ describe("BankAccount", () => {
     expect(mockTransactionHistory.add).toHaveBeenCalledWith("debit", 40, 10);
   });
 
-  describe("printStatement", () => {
-    it("calls printStatement function with transaction history as argument", () => {
+    it("getPrintStatement calls printStatement.crate function with transaction history as an argument", () => {
       mockPrintStatement.create = jest.fn();
       testBankAccount.getPrintStatement();
       
       expect(mockPrintStatement.create).toHaveBeenCalledTimes(1);
-    })
-  })
+    });
 });
