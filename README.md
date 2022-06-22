@@ -32,6 +32,90 @@ date || credit || debit || balance
 10/01/2023 || 1000.00 || || 1000.00
 ```
 
-## Self-assessment
+## Installation
+```
+$ git clone https://github.com/LGretzk/bank-tech-test.git
+$ cd bank-tech-test
+$ npm init -y
+```
 
-Once you have completed the challenge and feel happy with your solution, here's a form to help you reflect on the quality of your code: https://docs.google.com/forms/d/1Q-NnqVObbGLDHxlvbUfeAC7yBCf3eCjTmz6GOqC9Aeo/edit
+## Running the tests
+```
+jest
+```
+
+## Running the project
+```
+node
+.load bankAccount.js
+.load transactionHistory.js
+.load printStatement.js
+
+const transactionHistory = new TransactionHistory;
+const printStatement = new PrintStatement;
+const bank = new BankAccount(transactionHistory, printStatement);
+
+bank.deposit(50);
+bank.withdraw(30);
+bank.getPrintStatement();
+
+.exit
+```
+
+## Example
+![screenshot](/repl.png)
+
+
+## User stories
+```
+As a user,
+so that I can save money,
+I would like be able to deposit money onto my bank account.
+```
+```
+As a user,
+so that I can spend money,
+I would like to be able to witdraw money from my bank account.
+```
+```
+As a user,
+so that I know how much money I've got,
+I would like to be able to print a bank statement.
+```
+```
+As a user,
+so that I can stay on top of my expenses,
+I would like my bank statement to include date, amount and balance.
+```
+
+## Diagrams
+
+BankAccount <--deposit--> money
+
+BankAccount | deposit(amount)
+
+BankAccount <--withdraw--> money
+
+BankAccount | withdraw(amount)
+BankAccount <--print--> statement
+
+BankAccount | printStatement()
+
+
+BankAccount <--has--> balance
+BankAccount <--has--> transaction history
+
+BankAccount | balance
+BankAccount | transaction_history
+
+Transaction <--has--> a type (credit/debit)
+Transaction <--has--> an amount
+Transaction <--has--> a date
+Transaction <--has--> a balance
+
+BankAccount | transaction
+
+## Approach
+
+* started with 1 bank class
+* split the class into transaction history and print statement

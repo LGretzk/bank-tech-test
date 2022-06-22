@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/LGretzk/bank-tech-test#readme",
   "dependencies": {
+    "eslint": "^8.18.0",
     "jest": "^28.1.1"
   }
 }

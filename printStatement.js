@@ -1,5 +1,6 @@
 class PrintStatement {
   create(transactionHistory) {
+    console.log(`${this.printHeading()}${this.printBody(transactionHistory)}`);
     return `${this.printHeading()}${this.printBody(transactionHistory)}`
   }
 
